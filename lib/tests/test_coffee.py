@@ -33,3 +33,7 @@ def test_orders_customers_num_orders_average_price():
     assert cust2 in customers
     assert num_orders == 2
     assert avg_price == 6.0
+
+def test_average_price_no_orders():
+    coffee = Coffee("Americano")
+    assert coffee.average_price() == 0.0

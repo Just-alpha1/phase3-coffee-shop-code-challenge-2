@@ -1,5 +1,5 @@
-# phase3-code-challenge-2
 COFFEE SHOP DOMAIN
+
 A Python object-oriented programming project implementing a Customer–Coffee–Order domain model.
 This project demonstrates classes, instances, object relationships, encapsulation, validation, and aggregate methods following object-oriented programming principles.
 

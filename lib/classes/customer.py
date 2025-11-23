@@ -2,7 +2,7 @@ from typing import List, Optional
 from .order import Order
 
 class Customer:
-    def _init_(self, name: str):
+    def __init__(self, name: str):
         self.name = name
         self._orders: List['Order'] = []
 
@@ -47,13 +47,13 @@ class Customer:
 
         return max_customers[0]
 
-    def _eq_(self, other):
+    def __eq__(self, other):
         if not isinstance(other, Customer):
             return False
         return self.name == other.name
 
-    def _hash_(self):
+    def __hash__(self):
         return hash(self.name)
 
-    def _repr_(self):
+    def __repr__(self):
         return f"Customer(name={self.name!r})"

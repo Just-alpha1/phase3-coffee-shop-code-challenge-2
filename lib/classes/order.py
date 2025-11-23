@@ -5,7 +5,7 @@ if TYPE_CHECKING:
    from .coffee import Coffee
 
 class Order:
-    def _init_(self, customer: 'Customer', coffee: 'Coffee', price: float):
+    def __init__(self, customer: 'Customer', coffee: 'Coffee', price: float):
         if not hasattr(customer, 'name'):
             raise TypeError("customer must be a Customer instance")
         if not hasattr(coffee, 'name'):

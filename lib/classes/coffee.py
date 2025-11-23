@@ -37,13 +37,13 @@ class Coffee:
         total = sum(order.price for order in self._orders)
         return total / len(self._orders)
 
-    def _eq_(self, other):
+    def __eq__(self, other):
         if not isinstance(other, Coffee):
             return False
         return self.name == other.name
 
-    def _hash_(self):
+    def __hash__(self):
         return hash(self.name)
 
-    def _repr_(self):
+    def __repr__(self):
         return f"Coffee(name={self.name!r})"

@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from lib.classes.customer import Customer
 
 class Coffee:
-    def _init_(self, name: str):
+    def __init__(self, name: str):
         self.name = name
         self._orders: List['Order'] = []
 

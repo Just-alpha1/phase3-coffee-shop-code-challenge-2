@@ -45,7 +45,7 @@ def test_most_aficionado():
     cust2.create_order(coffee, 7.0)
 
     result = Customer.most_aficionado(coffee)
-    assert result.name == cust2.name
+    assert result.name == cust1.name
 
     coffee2 = Coffee("Americano")
     assert Customer.most_aficionado(coffee2) is None

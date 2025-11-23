@@ -1,4 +1,4 @@
-COFFEE SHOP DOMAIN
+COFFEE SHOP DOMAIN PROJECT
 
 A Python object-oriented programming project implementing a Customer–Coffee–Order domain model.
 This project demonstrates classes, instances, object relationships, encapsulation, validation, and aggregate methods following object-oriented programming principles.
@@ -17,7 +17,25 @@ Setup Instructions
 1. Clone the Repository
 `bash
 git clone https://github.com/<your-username>/coffee-shop-domain-oop.git
-cd phase3-coffee-shop-domain-app
+cd coffee-shop-domain-oop
+
+2. Set Up Virtual Environment
+`bash
+pipenv install
+pipenv shell
+
+3. Install Dependencies
+`bash
+pipenv install pytest
+
+4. Run Tests
+`bash
+pytest
+
+5. Interactive Debugging
+Run debug.py for manual testing:
+`bash
+python debug.py
 
 Copyright (c) 2025 Collins Thuo
 
@@ -37,4 +55,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

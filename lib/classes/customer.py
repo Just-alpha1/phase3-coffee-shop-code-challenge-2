@@ -32,6 +32,21 @@ class Customer:
         coffee._orders.append(order)
         return order
 
+    @classmethod
+    def most_aficionado(cls, coffee: 'Coffee') -> Optional['Customer']:
+        if not coffee.orders():
+            return None
+
+        spending = {}
+        for order in coffee.orders():
+            customer = order.customer
+            spending[customer] = spending.get(customer, 0) + order.price
+
+        max_spent = max(spending.values())
+        max_customers = [c for c, amt in spending.items() if amt == max_spent]
+
+        return max_customers[0]
+
     def _eq_(self, other):
         if not isinstance(other, Customer):
             return False

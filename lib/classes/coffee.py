@@ -16,7 +16,7 @@ class Coffee:
     @name.setter
     def name(self, value: str):
         if not isinstance(value, str):
-            raise TypeError("Coffee name must be a string"),
+            raise TypeError("Coffee name must be a string")
         if len(value) < 3:
             raise ValueError("Coffee name must be at least 3 characters long")
         self._name = value

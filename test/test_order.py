@@ -1,7 +1,5 @@
 import pytest
-from lib.classes.order import Order
-from lib.classes.customer import Customer
-from lib.classes.coffee import Coffee
+from coffee import Order, Customer, Coffee
 
 def test_order_initialization_and_properties():
     cust = Customer("Alvin")

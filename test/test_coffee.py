@@ -1,6 +1,5 @@
 import pytest
-from lib.classes.coffee import Coffee
-from lib.classes.customer import Customer
+from coffee import Coffee, Customer
 
 def test_coffee_name_validation():
     with pytest.raises(TypeError):

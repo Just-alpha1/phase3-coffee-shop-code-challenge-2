@@ -1,4 +1,8 @@
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .coffee import Coffee
+
 from .order import Order
 
 class Customer:
@@ -26,7 +30,6 @@ class Customer:
         return list(unique_coffees)
 
     def create_order(self, coffee: 'Coffee', price: float) -> 'Order':
-        from lib.classes.order import Order
         order = Order(customer=self, coffee=coffee, price=price)
         self._orders.append(order)
         coffee._orders.append(order)

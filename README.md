@@ -16,7 +16,7 @@ Includes debug.py interactive console for manual testing
 Setup Instructions
 1. Clone the Repository
 `bash
-git clone https://github.com/<your-username>/coffee-shop-domain-oop.git
+git clone git@github.com:Just-alpha1/phase3-coffee-shop-code-challenge-2.git
 cd coffee-shop-domain-oop
 
 2. Set Up Virtual Environment

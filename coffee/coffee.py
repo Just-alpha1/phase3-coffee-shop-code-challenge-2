@@ -1,8 +1,8 @@
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from lib.classes.order.order import Order
-    from lib.classes.customer import Customer
+    from .order import Order
+    from .customer import Customer
 
 
 class Coffee:

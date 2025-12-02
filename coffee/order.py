@@ -5,6 +5,7 @@ if TYPE_CHECKING:
    from .coffee import Coffee
 
 class Order:
+    all = []
     def __init__(self, customer: 'Customer', coffee: 'Coffee', price: float):
         if not hasattr(customer, 'name'):
             raise TypeError("customer must be a Customer instance")
@@ -17,6 +18,8 @@ class Order:
         self._customer = customer
         self._coffee = coffee
         self.price = price
+        Order.all.append(self)
+        self._coffee._orders.append(self)
 
     @property
     def customer(self) -> 'Customer':

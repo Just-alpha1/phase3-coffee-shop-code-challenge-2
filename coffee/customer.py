@@ -1,62 +1,51 @@
-from typing import List, Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .coffee import Coffee
-
-from .order import Order
+    from .order import Order
 
 class Customer:
-    def __init__(self, name: str):
+    all = []
+
+    def __init__(self, name):
         self.name = name
-        self._orders: List['Order'] = []
+        Customer.all.append(self)
+
 
     @property
-    def name(self) -> str:
+    def name(self):
         return self._name
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value):
         if not isinstance(value, str):
-            raise TypeError("Name must be a string")
+            raise TypeError("Customer name must be a string")
         if not (1 <= len(value) <= 15):
-            raise ValueError("Name length must be between 1 and 15 characters")
+            raise Exception("Name must be between 1 and 15 chars")
         self._name = value
 
-    def orders(self) -> List['Order']:
-        return list(self._orders)
+   
+    def orders(self):
+        from .order import Order
+        return [order for order in Order.all if order.customer == self]
 
-    def coffees(self) -> List['Coffee']:
-        unique_coffees = {order.coffee for order in self._orders}
-        return list(unique_coffees)
 
-    def create_order(self, coffee: 'Coffee', price: float) -> 'Order':
-        order = Order(customer=self, coffee=coffee, price=price)
-        self._orders.append(order)
-        coffee._orders.append(order)
-        return order
+    def coffees(self):
+        return list({order.coffee for order in self.orders()})
+
+    
+    def create_order(self, coffee, price):
+        return Order(self, coffee, price)
 
     @classmethod
-    def most_aficionado(cls, coffee: 'Coffee') -> Optional['Customer']:
-        if not coffee.orders():
+    def most_aficionado(cls, coffee):
+        """Customer who spent the most on a given coffee"""
+        from .order import Order
+        spenders = {}
+        for order in Order.all:
+            if order.coffee == coffee:
+                spenders[order.customer] = spenders.get(order.customer, 0) + order.price
+
+        if not spenders:
             return None
 
-        spending = {}
-        for order in coffee.orders():
-            customer = order.customer
-            spending[customer] = spending.get(customer, 0) + order.price
-
-        max_spent = max(spending.values())
-        max_customers = [c for c, amt in spending.items() if amt == max_spent]
-
-        return max_customers[0]
-
-    def __eq__(self, other):
-        if not isinstance(other, Customer):
-            return False
-        return self.name == other.name
-
-    def __hash__(self):
-        return hash(self.name)
-
-    def __repr__(self):
-        return f"Customer(name={self.name!r})"
+        return max(spenders, key=spenders.get)

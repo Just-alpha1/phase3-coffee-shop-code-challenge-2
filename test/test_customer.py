@@ -1,5 +1,7 @@
 import pytest
-from coffee import Customer, Coffee, Order
+from coffee.customer import Customer
+from coffee.coffee import Coffee
+from coffee.order import Order
 
 def test_customer_name_validation():
     with pytest.raises(TypeError):
